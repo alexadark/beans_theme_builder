@@ -25,7 +25,10 @@ function wst_remove_page_titles(){
 }
 
 //header
-beans_wrap_markup('beans_header', 'beans_header_wrapper', 'div', array('class'=>'beans_header_wrapper'));
+beans_wrap_markup('beans_header', 'beans_header_wrapper', 'div', array(
+	'class'=>'tm-header-wrapper uk-cover-background',
+	'data-uk-parallax' => "{bg: '-500'}"
+));
 
 //Footer
 beans_wrap_markup('beans_footer','beans_footer_wrapper','div', array('class'=>'tm-footer-wrapper'));

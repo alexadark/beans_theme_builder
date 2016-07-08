@@ -8,9 +8,16 @@ Site
 /*--------------------------------------------------------------
 Header
 --------------------------------------------------------------*/
+.tm-header-wrapper{
+  background: url('../images/hero.jpg') no-repeat;
+  //opacity:.8;
+  height: 100vh;
+  min-height: 800px;
+}
 .tm-header{
   border-bottom:none;
   padding: @global-margin;
+  background:rgba(0,0,0,.2);
 }
 .tm-site-branding{
   a{
@@ -19,6 +26,21 @@ Header
     text-transform: uppercase;
   }
 }
+/*--------------------------------------------------------------
+Header nav
+--------------------------------------------------------------*/
+.tm-header{
+  .uk-navbar-nav > li > a{
+    color: @white;
+    font-weight: 400;
+    font-size:12px;
+    text-transform: uppercase;
+    &:hover{
+      color:@primary-color;
+    }
+  }
+}
+
 
 
 
