@@ -1,6 +1,6 @@
 <?php
+//Register widgets
 add_action( 'widgets_init', 'beans_child_widgets_init' );
-
 function beans_child_widgets_init() {
 	beans_register_widget_area( array(
 		'name' => 'Fat Footer',

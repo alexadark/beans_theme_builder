@@ -12,8 +12,9 @@ function wst_setup_document() {
 	beans_add_attribute('beans_widget_panel', 'class', 'uk-panel-box');
 
 	//Navigation
-
+	
 	//Post Content
+
 
 }
 //Remove title only on pages
@@ -27,8 +28,15 @@ function wst_remove_page_titles(){
 //header
 beans_wrap_markup('beans_header', 'beans_header_wrapper', 'div', array(
 	'class'=>'tm-header-wrapper uk-cover-background',
-	'data-uk-parallax' => "{bg: '-500'}"
+	'data-uk-parallax' => "{bg: '-200'}"
 ));
+
+//sticky header
+beans_add_attribute('beans_header','data-uk-sticky',"{top:-300, animation:'uk-animation-slide-top'}");
+
 
 //Footer
 beans_wrap_markup('beans_footer','beans_footer_wrapper','div', array('class'=>'tm-footer-wrapper'));
+
+
+	

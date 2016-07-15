@@ -1,9 +1,51 @@
 /*
  * In this file, you may style your site using CSS or LESS as well as overwrite UIkit LESS variables.
  * Make sure to enable development mode via the Admin->Appearance->Settings option while working on your website. LESS will then be processed on the fly.
+ */
+
+/*--------------------------------------------------------------
+Fonts
+--------------------------------------------------------------*/
+@font-face {
+  font-family: 'icomoon';
+  src:    url('../fonts/icomoon.eot?gdf0z1');
+  src:    url('../fonts/icomoon.eot?gdf0z1#iefix') format('embedded-opentype'),
+  url('../fonts/icomoon.ttf?gdf0z1') format('truetype'),
+  url('../fonts/icomoon.woff?gdf0z1') format('woff'),
+  url('../fonts/icomoon.svg?gdf0z1#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-previous:before {
+  content: "\e628";
+}
+.icon-next:before {
+  content: "\e629";
+}
+
+
 /*--------------------------------------------------------------
 Site
 --------------------------------------------------------------*/
+a{
+  .transition(color);
+}
 
 /*--------------------------------------------------------------
 Header
@@ -11,13 +53,18 @@ Header
 .tm-header-wrapper{
   background: url('../images/hero.jpg') no-repeat;
   //opacity:.8;
-  height: 100vh;
-  min-height: 800px;
+  //height: 100vh;
+  min-height: 500px;
+  -webkit-background-size:cover;
+  background-size:cover;
 }
 .tm-header{
   border-bottom:none;
   padding: @global-margin;
   background:rgba(0,0,0,.2);
+  &.uk-active{
+    background: @black;
+  }
 }
 .tm-site-branding{
   a{
@@ -45,6 +92,8 @@ Header nav
 
 
 
+
+
 /*--------------------------------------------------------------
 sidebar
 --------------------------------------------------------------*/
@@ -62,6 +111,10 @@ content
 .tm-main{
   //background: @white;
 }
+.tm-site{
+  width: 100%;
+  overflow-x: hidden;
+}
 
 
 /*--------------------------------------------------------------
@@ -75,5 +128,18 @@ footer
 .tm-fat-footer{
   background: @bg-grey;
 }
+
+/*--------------------------------------------------------------
+sliders
+--------------------------------------------------------------*/
+//.tm-slideshow-panel{
+//  .uk-slidenav-position .uk-slidenav-previous{
+//    left: 50px;
+//  }
+//
+//}
+
+
+
 
 
