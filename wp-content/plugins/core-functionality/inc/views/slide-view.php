@@ -8,7 +8,7 @@
 	<?php if ( ! $slide_caption ) {
 		return;
 	} else { ?>
-		<div class="<?php echo $slide_caption_classes;?>">
+		<div class="<?php echo $slide_caption_classes;?>" >
 			<div>
 				<?php echo $slide_caption; ?>
 			</div>
