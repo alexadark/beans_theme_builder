@@ -1,5 +1,5 @@
 <div class="<?php echo esc_attr( $layout['crb_classes'] ); ?>"
-     data-uk-slideshow="{<?php echo esc_attr( $layout['crb_slider_data'] ); ?>}">
+     data-uk-slideshow="{<?php echo esc_attr( $layout['crb_animation_data'] ); ?>}">
 	<ul class="uk-slideshow">
 		<?php wst_display_slides( $layout ); ?>
 	</ul>
