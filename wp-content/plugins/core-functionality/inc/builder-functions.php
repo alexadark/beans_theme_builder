@@ -54,8 +54,11 @@ function wst_display_slides( $layout ) {
 		$slide_title           = esc_attr( $slide_image['title'] );
 		$slide_caption         = $slide['crb_slide_caption'];
 		$slide_caption_classes = esc_attr( $slide['crb_slide_caption_classes'] );
-		$badge_title = esc_html($slide['crb_badge_title']);
-		$badge_classes = esc_attr($slide['crb_badge_classes']);
+		$badge_title           = esc_html( $slide['crb_badge_title'] );
+		$badge_classes         = esc_attr( $slide['crb_badge_classes'] );
+		$slide_choice          = $slide['crb_type_of_slide'];
+		$vimeo                 = $slide['crb_vimeo'];
+		$youtube               = $slide['crb_youtube'];
 		include( 'views/slide-view.php' );
 	}
 }
@@ -92,7 +95,7 @@ function wst_display_slideshow_panel( $layout ) {
 	$animate       = count( $layout['crb_slides_text'] ) > 1;
 	$animate_class = $animate ? 'slideshow-panel-animate' : '';
 
-	include('views/slideshow-panel-view.php');
+	include( 'views/slideshow-panel-view.php' );
 
 }
 
@@ -130,6 +133,6 @@ function wst_display_text_slides( $layout ) {
  * @return void
  */
 //Parallax
-function wst_display_parallax_area($layout){
-	include('views/parallax-view.php');
+function wst_display_parallax_area( $layout ) {
+	include( 'views/parallax-view.php' );
 }
