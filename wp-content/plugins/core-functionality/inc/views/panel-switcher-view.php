@@ -1,4 +1,4 @@
-<div class="<?php echo esc_attr( $layout['crb_classes'] ); ?>">
+<div class="tm-panel-switcher <?php echo esc_attr( $layout['crb_classes'] ); ?>">
 	<ul class="uk-subnav tm-subnav-panel-switcher <?php echo esc_attr( $layout['crb_subnav_classes'] ); ?> "
 	    data-uk-switcher="{connect:'.switcher-content'}">
 		<?php wst_display_subnav_items( $layout ); ?>
