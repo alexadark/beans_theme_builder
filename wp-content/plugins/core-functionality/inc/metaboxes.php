@@ -5,12 +5,12 @@ use Carbon_Fields\Field;
 $dotnav_classes = Field::make( 'text', 'crb_dotnav_classes' )
                        ->set_default_value( 'uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center' );
 $slider_images  = Field::make( 'image', 'crb_slider_images' )
-	->set_conditional_logic(array(
-		array(
-			'field'=> 'crb_type_of_slide',
-			'value'=>'image'
-		)
-	));
+                       ->set_conditional_logic( array(
+	                       array(
+		                       'field' => 'crb_type_of_slide',
+		                       'value' => 'image'
+	                       )
+                       ) );
 $animation_data = Field::make( 'text', 'crb_animation_data' );
 $classes        = Field::make( 'text', 'crb_classes', 'Custom Classes' );
 $content        = Field::make( 'rich_text', 'crb_text_editor', 'Content' );
@@ -21,19 +21,19 @@ $slide_select   = Field::make( "select", "crb_type_of_slide" )
 	                       'youtube' => 'Video Youtube'
                        ) );
 $vimeo          = Field::make( 'text', 'crb_vimeo', 'Vimeo ID' )
-	->set_conditional_logic(array(
-	array(
-		'field'=> 'crb_type_of_slide',
-		'value'=>'vimeo'
-	)
-));
+                       ->set_conditional_logic( array(
+	                       array(
+		                       'field' => 'crb_type_of_slide',
+		                       'value' => 'vimeo'
+	                       )
+                       ) );
 $youtube        = Field::make( 'text', 'crb_youtube', 'Youtube ID' )
-	->set_conditional_logic(array(
-		array(
-			'field'=> 'crb_type_of_slide',
-			'value'=>'youtube'
-		)
-	));
+                       ->set_conditional_logic( array(
+	                       array(
+		                       'field' => 'crb_type_of_slide',
+		                       'value' => 'youtube'
+	                       )
+                       ) );
 
 Container::make( 'post_meta', 'layouts' )
          ->set_priority( 'high' )
@@ -101,7 +101,7 @@ Container::make( 'post_meta', 'layouts' )
 				                   ->set_default_value( 'uk-width-2-3 uk-container-center uk-text-center' ),
 			              ) ),
 			         $dotnav_classes,
-		         ) )->set_layout( 'tabbed' )
+		         ) )
 		         /**
 		          * PARALLAX AREA
 		          */
@@ -111,7 +111,32 @@ Container::make( 'post_meta', 'layouts' )
 			         Field::make( 'image', 'crb_parallax_image' )->set_value_type( 'url' ),
 			         Field::make( 'text', 'crb_content_classes', 'Content custom classes' ),
 			         Field::make( 'text', 'crb_content_data_animate' ),
+
 			         $content,
-		         ) )->set_layout( 'tabbed' )
+		         ) )
+		         /**
+		          * PANEL SWITCHER
+		          */
+		          ->add_fields( 'panel_switcher', array(
+			         $classes->set_default_value( 'uk-container-center uk-container uk-block uk-margin-large ' ),
+			         Field::make( 'text', 'crb_subnav_classes' )->set_default_value( 'uk-subnav-pill  uk-flex uk-flex-center' ),
+			         Field::make( 'complex', 'crb_subnav' )->set_layout( 'tabbed' )
+			              ->add_fields( array(
+				              Field::make( 'text', 'crb_subnav_item' ),
+			              ) ),
+			         Field::make( 'complex', 'crb_switcher_content' )->set_layout( 'tabbed' )
+			              ->add_fields( array(
+				              $classes->set_default_value(''),
+				              Field::make('complex','crb_switcher_content_item')->set_layout( 'tabbed')
+					              ->add_fields( array(
+						              Field::make( 'text', 'crb_badge_text' ),
+						              Field::make( 'text', 'crb_panel_title', 'Title' ),
+						              Field::make( 'image', 'crb_panel_image', 'Image' ),
+						              Field::make( 'textarea', 'crb_panel_content', 'Content' )->set_rows( 3 ),
+
+					              ) )
+			              ) )
+
+		         ) )
 
          ) );

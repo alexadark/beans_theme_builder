@@ -136,3 +136,74 @@ function wst_display_text_slides( $layout ) {
 function wst_display_parallax_area( $layout ) {
 	include( 'views/parallax-view.php' );
 }
+
+/**
+ * Display panel switcher
+ *
+ * @since 1.0.0
+ *
+ * @param $layout
+ *
+ * @return void
+ */
+//Panel Switcher
+function wst_display_panel_switcher( $layout ) {
+	include( 'views/panel-switcher-view.php' );
+}
+
+/**
+ * Display each item in a subnav element
+ *
+ * @since 1.0.0
+ *
+ * @param $layout
+ *
+ * @return void
+ */
+function wst_display_subnav_items( $layout ) {
+	$nav_items = $layout['crb_subnav'];
+	foreach ( $nav_items as $nav_item ) { ?>
+		<li><a href="#"><?php echo esc_html( $nav_item['crb_subnav_item'] ); ?></a></li>
+	<?php }
+}
+
+/**
+ * Display each item of a switcher
+ *
+ * @since 1.0.0
+ *
+ * @param $layout
+ *
+ * @return void
+ */
+function wst_display_switcher_items( $layout ) {
+	$list_items = $layout['crb_switcher_content'];
+	foreach ( $list_items as $list_item ) {
+		$classes = esc_attr( $list_item['crb_classes'] );
+		?>
+	<li class="uk-grid uk-grid-width-medium-1-2 uk-margin-large-top <?php echo $classes ?>">
+		<?php wst_display_switcher_panels_content( $list_item); ?>
+	</li>
+<?php }
+}
+
+/**
+ * Display content of each panel in a switcher
+ *
+ * @since 1.0.0
+ *
+ * @param $list_item
+ *
+ * @return void
+ */
+function wst_display_switcher_panels_content($list_item){
+
+	$panels = $list_item['crb_switcher_content_item'];
+	foreach ( $panels as $panel ) {
+		$badge   = esc_html( $panel['crb_badge_text'] );
+		$title   = esc_html( $panel['crb_panel_title'] );
+		$content = $panel['crb_panel_content'];
+		$image   = wp_get_attachment_image( $panel['crb_panel_image'], 'thumbnail' );
+		include( 'views/switcher-content-item-view.php' );
+	}
+}
