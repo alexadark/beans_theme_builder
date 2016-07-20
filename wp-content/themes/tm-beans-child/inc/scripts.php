@@ -14,7 +14,9 @@ beans_compiler_add_fragment( 'uikit', get_stylesheet_directory_uri() . '/assets/
 	beans_compiler_add_fragment( 'uikit', get_stylesheet_directory_uri() . '/assets/js/theme.js', 'js' );
 	beans_compiler_add_fragment( 'uikit', get_stylesheet_directory_uri() . '/assets/js/animatedtext.js', 'js' );
 
-beans_uikit_enqueue_components( array( 'contrast', 'cover', 'animation', 'modal', 'overlay','column', 'switcher' ) );
+beans_uikit_enqueue_components( array( 'contrast', 'cover', 'animation', 'modal', 'overlay','column', 'switcher',
+	'scrollspy'
+	 ) );
 beans_uikit_enqueue_components( array( 'sticky', 'slideshow','slider', 'lightbox', 'grid', 'parallax', 'dotnav',
 	'slidenav'),
 'add-ons' );

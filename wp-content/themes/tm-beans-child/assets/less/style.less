@@ -31,7 +31,18 @@ Fonts
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.icon-link:before {
+  content: "\e015";
+}
+.icon-magnify:before {
+  content: "\e01f";
+}
+.icon-eye:before {
+  content: "\e02c";
+}
+.icon-close:before {
+  content: "\e306";
+}
 .icon-previous:before {
   content: "\e628";
 }
@@ -179,6 +190,89 @@ Switcher Panel Menu
     font-style: italic;
     font-size: 16px
   }
+}
+
+//CODROPS OVERLAYS
+.tm-overlay-layla {
+
+  .uk-overlay {
+
+    > .uk-overlay-panel {
+
+      padding: (@global-margin + 10px);
+
+      // Large screen
+      @media (min-width: @breakpoint-xlarge) { padding: (@global-margin-large + 10px); }
+
+      > * { z-index: 1; }
+
+      &:before,
+      &:after {
+        position: absolute;
+        content: '';
+        opacity: 0;
+        -webkit-transition: opacity 0.4s, -webkit-transform 0.4s;
+        transition: opacity 0.4s, transform 0.4s;
+      }
+
+      &:before{
+        top: @global-margin;
+        right: @global-margin-small;
+        bottom: @global-margin;
+        left: @global-margin-small;
+        border-top: 1px solid @theme_overlay-border;
+        border-bottom: 1px solid @theme_overlay-border;
+        -webkit-transform: scale(0,1);
+        transform: scale(0,1);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+
+        // Large screen
+        @media (min-width: @breakpoint-xlarge) {
+          top: @global-margin-large;
+          right: @global-margin;
+          bottom: @global-margin-large;
+          left: @global-margin;
+        }
+      }
+
+      &:after {
+        top: @global-margin-small;
+        right: @global-margin;
+        bottom: @global-margin-small;
+        left: @global-margin;
+        border-right: 1px solid @theme_overlay-border;
+        border-left: 1px solid @theme_overlay-border;
+        -webkit-transform: scale(1,0);
+        transform: scale(1,0);
+        -webkit-transform-origin: 100% 0;
+        transform-origin: 100% 0;
+
+        // Large screen
+        @media (min-width: @breakpoint-xlarge) {
+          top: @global-margin;
+          right: @global-margin-large;
+          bottom: @global-margin;
+          left: @global-margin-large;
+        }
+      }
+
+    }
+
+    &:hover > .uk-overlay-panel:before,
+    &:hover > .uk-overlay-panel:after {
+      opacity: 1;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+
+    &:hover > .uk-overlay-panel:after {
+      -webkit-transition-delay: 0.1s;
+      transition-delay: 0.1s;
+    }
+
+  }
+
 }
 
 

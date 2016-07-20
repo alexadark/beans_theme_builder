@@ -9,13 +9,13 @@
  * @return void
  */
 function wst_display_text_area( $layout ) {
-	$text_area = $layout['crb_text_editor'];
-	$classes   = esc_attr( $layout['crb_classes'] );
-	?>
-	<div class="<?php echo $classes ?>">
-		<?php echo $text_area ?>
-	</div>
-	<?php
+		$text_area = $layout['crb_text_editor'];
+		$classes   = esc_attr( $layout['crb_classes'] );
+		?>
+		<div class="<?php echo $classes ?>">
+			<?php echo $text_area ?>
+		</div>
+		<?php
 }
 
 //SLIDER
@@ -56,7 +56,7 @@ function wst_display_slides( $layout ) {
 		$slide_caption_classes = esc_attr( $slide['crb_slide_caption_classes'] );
 		$badge_title           = esc_html( $slide['crb_badge_title'] );
 		$badge_classes         = esc_attr( $slide['crb_badge_classes'] );
-		$slide_choice          = $slide['crb_type_of_slide'];
+		$slide_choice          = $slide['crb_type_of_media'];
 		$vimeo                 = $slide['crb_vimeo'];
 		$youtube               = $slide['crb_youtube'];
 		include( 'views/slide-view.php' );
@@ -181,10 +181,10 @@ function wst_display_switcher_items( $layout ) {
 	foreach ( $list_items as $list_item ) {
 		$classes = esc_attr( $list_item['crb_classes'] );
 		?>
-	<li class="uk-grid uk-grid-width-medium-1-2 uk-margin-large-top <?php echo $classes ?>">
-		<?php wst_display_switcher_panels_content( $list_item); ?>
-	</li>
-<?php }
+		<li class="uk-grid uk-grid-width-medium-1-2 uk-margin-large-top <?php echo $classes ?>">
+			<?php wst_display_switcher_panels_content( $list_item ); ?>
+		</li>
+	<?php }
 }
 
 /**
@@ -196,7 +196,7 @@ function wst_display_switcher_items( $layout ) {
  *
  * @return void
  */
-function wst_display_switcher_panels_content($list_item){
+function wst_display_switcher_panels_content( $list_item ) {
 
 	$panels = $list_item['crb_switcher_content_item'];
 	foreach ( $panels as $panel ) {
@@ -207,3 +207,47 @@ function wst_display_switcher_panels_content($list_item){
 		include( 'views/switcher-content-item-view.php' );
 	}
 }
+
+/**
+ * Display a versatile lightbox gallery, with content and hover effects
+ *
+ * @since 1.0.0
+ *
+ * @param $layout
+ *
+ * @return void
+ */
+function wst_display_lightbox_gallery( $layout ) {
+	include('views/lightbox-gallery-view.php');
+ }
+
+/**
+ * Displays the items image and content for the lightbox gallery
+ *
+ * @since 1.0.0
+ *
+ * @param $layout
+ *
+ * @return void
+ */
+function wst_display_lightbox_gallery_items($layout){
+	if(!$layout['crb_gallery_items']){
+		return;
+	}
+	$items = $layout['crb_gallery_items'];
+	foreach ( $items as $item ) {
+		$image_id    = esc_html( $item['crb_image'] );
+		$image       = wp_get_attachment( $image_id );
+		$image_size = esc_attr($item['crb_image_size']);
+		$image_url   = wp_get_attachment_image_url( $image_id, $image_size );
+		$image_alt   = esc_attr( $image['alt'] );
+		$image_title = esc_attr( $image['title'] );
+		$content     = $item['crb_text_editor'];
+		include('views/lightbox-gallery-item-view.php');
+		 }
+
+}
+
+
+
+
