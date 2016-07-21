@@ -11,6 +11,9 @@
 function wst_display_text_area( $layout ) {
 		$text_area = $layout['crb_text_editor'];
 		$classes   = esc_attr( $layout['crb_classes'] );
+		if ( ! $text_area ) {
+		return;
+		}
 		?>
 		<div class="<?php echo $classes ?>">
 			<?php echo $text_area ?>
@@ -29,6 +32,9 @@ function wst_display_text_area( $layout ) {
  * @return void
  */
 function wst_display_slider( $layout ) {
+	if ( ! $layout['crb_slides'] ) {
+		return;
+	}
 	include( 'views/slider-view.php' );
 }
 
@@ -42,9 +48,7 @@ function wst_display_slider( $layout ) {
  * @return void
  */
 function wst_display_slides( $layout ) {
-	if ( ! $layout['crb_slides'] ) {
-		return;
-	}
+
 	$slides = $layout['crb_slides'];
 	foreach ( $slides as $slide ) {
 		$slide_id              = esc_html( $slide['crb_slider_images'] );
@@ -94,6 +98,9 @@ function wst_display_dotnav_items( $layout ) {
 function wst_display_slideshow_panel( $layout ) {
 	$animate       = count( $layout['crb_slides_text'] ) > 1;
 	$animate_class = $animate ? 'slideshow-panel-animate' : '';
+	if ( ! $layout['crb_slides'] ) {
+		return;
+	}
 
 	include( 'views/slideshow-panel-view.php' );
 
@@ -148,6 +155,9 @@ function wst_display_parallax_area( $layout ) {
  */
 //Panel Switcher
 function wst_display_panel_switcher( $layout ) {
+	if(!$layout['crb_switcher_content']){
+		return;
+	}
 	include( 'views/panel-switcher-view.php' );
 }
 
@@ -218,6 +228,9 @@ function wst_display_switcher_panels_content( $list_item ) {
  * @return void
  */
 function wst_display_lightbox_gallery( $layout ) {
+	if(!$layout['crb_gallery_items']){
+		return;
+	}
 	include('views/lightbox-gallery-view.php');
  }
 
